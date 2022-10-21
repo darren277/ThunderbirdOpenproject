@@ -1,21 +1,21 @@
 {
-  "name": "thunderbirdtodoist",
-  "description": "Thunderbird Add-On for [Todoist](https://todoist.com).",
+  "name": "thunderbirdopenproject",
+  "description": "Thunderbird Add-On for [OpenProject](https://www.openproject.org).",
   "version": "0.4",
   "scripts": {
-    "format": "prettier --write thunderbird-todoist"
+    "format": "prettier --write thunderbird-openproject"
   },
   "devDependencies": {
     "prettier": "^2.7.1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SmBe19/ThunderbirdTodoist.git"
+    "url": "git+https://github.com/rphenriques/ThunderbirdOpenproject.git"
   },
-  "author": "Benjamin Schmid",
+  "author": "Rui Pedro Henriques",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SmBe19/ThunderbirdTodoist/issues"
+    "url": "https://github.com/rphenriques/ThunderbirdOpenproject/issues"
   },
-  "homepage": "https://github.com/SmBe19/ThunderbirdTodoist#readme"
+  "homepage": "https://github.com/rphenriques/ThunderbirdOpenproject#readme"
 }

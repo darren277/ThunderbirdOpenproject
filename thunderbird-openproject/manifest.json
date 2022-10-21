@@ -1,12 +1,12 @@
 {
   "manifest_version": 2,
-  "name": "Thunderbird Todoist",
-  "description": "Extension to add tasks to Todoist",
-  "version": "0.4",
-  "author": "Benjamin Schmid",
+  "name": "Thunderbird OpenProject",
+  "description": "Extension to add tasks to OpenProject",
+  "version": "0.3",
+  "author": "Rui Pedro Henriques",
   "applications": {
     "gecko": {
-      "id": "thunderbird-todoist@apps.smeanox.com",
+      "id": "thunderbird-openproject@addons.thunderbird.net",
       "strict_min_version": "68.0",
       "strict_max_version": "102.*"
     }
