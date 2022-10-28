@@ -27,7 +27,7 @@
     "open_in_tab": false,
     "browser_style": true
   },
-  "permissions": ["storage", "messagesRead"],
+  "permissions": ["storage", "messagesRead", "all_urls"],
   "icons": {
     "64": "images/icon.png",
     "32": "images/icon_32.png",
