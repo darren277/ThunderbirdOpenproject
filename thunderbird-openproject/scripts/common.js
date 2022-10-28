@@ -114,7 +114,7 @@ function findMessageBody(messageId) {
         );
 }
 
-function formatDefaultTaskContent(message, maillink) {
+function formatDefaultTaskContent(message) {
     function twoDigits(num) {
         if (num < 10) {
             return "0" + num;
@@ -139,7 +139,6 @@ function formatDefaultTaskContent(message, maillink) {
             .replace("%date-mm%", twoDigits(message.date.getMinutes()))
             .replace("%date-ss%", twoDigits(message.date.getSeconds()))
             .replace("%msgid%", message.headerMessageId)
-            .replace("%msgurl%", maillink)
     );
 }
 

@@ -1,27 +1,25 @@
-function doRequest(endpoint, config) {
-    let apiurl = "";
-    loadAPIUrl().then((res) => {
-        apiurl = res;
-    });
+async function doRequest(endpoint, config) {
+    let apiurl = await loadAPIUrl();
+    let apikey = await loadAPIToken();
 
-    return loadAPIToken().then((apikey) => {
-        var credentials = btoa("apikey:" + apikey);
-        config.headers = {
-            Authorization: "Basic " + credentials,
-        };
-        if (config.body) {
-            config.headers["Content-Type"] = "application/json";
-        }
-        return window
-            .fetch(apiurl + endpoint, config)
-            .then((res) => {
-                if (!res.ok) {
-                    console.log("Error with request to " + endpoint + ": ", res);
-                    return Promise.reject();
-                }
-                return res.json();
-            });
-    });
+    var credentials = btoa("apikey:" + apikey);
+    config.headers = {
+        Authorization: "Basic " + credentials,
+    };
+    if (config.body) {
+        config.headers["Content-Type"] = "application/json";
+    }
+
+    // This could be split up into sequential async code as well.
+    return window
+        .fetch(apiurl + endpoint, config)
+        .then((res) => {
+            if (!res.ok) {
+                console.log("Error with request to " + endpoint + ": ", res);
+                return Promise.reject();
+            }
+            return res.json();
+        });
 }
 
 function requestGet(endpoint) {
@@ -32,6 +30,17 @@ function requestPost(endpoint, data) {
     return doRequest(endpoint, { method: "post", body: JSON.stringify(data) });
 }
 
+function compareNames(a, b) {
+    if (a.name < b.name) {
+        return -1;
+    }
+    if (a.name > b.name) {
+        return 1;
+    }
+    return 0;
+}
+
+
 function getAllProjects() {
     return requestGet("/api/v3/projects").then((res) => {
         let projects = {};
@@ -41,15 +50,14 @@ function getAllProjects() {
             proj.childs = [];
         });
         res._embedded.elements.forEach((proj) => {
-            if (proj.parent) {
-                let text = "How are you doing today?";
-                const projhref = proj.parent.href.split("/");
+            if (proj._links.parent.href) {
+                const projhref = proj._links.parent.href.split("/");
                 projects[projhref[4]].childs.push(proj);
             } else {
                 roots.push(proj);
             }
         });
-        return roots;
+        return roots.sort(compareNames);
     });
 }
 
@@ -59,7 +67,7 @@ function getAllUsers() {
         res._embedded.elements.forEach((usr) => {
             users.push(usr);
         });
-        return users;
+        return users.sort(compareNames);
     });
 }
 

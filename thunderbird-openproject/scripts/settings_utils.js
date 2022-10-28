@@ -34,7 +34,6 @@ function showSettingsIfNecessary() {
     loadAPIUrl().then((apiurl) => {
         loadAPIToken().then((token) => {
             if (!token || token.length < 40 || !apiurl || apiurl < 10) {
-                // TODO does not work...
                 browser.runtime.openOptionsPage();
             }
         })

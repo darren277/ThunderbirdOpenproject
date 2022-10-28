@@ -41,17 +41,10 @@ function applyToken() {
 
 function updateCustomTaskFormat() {
     const value = document.getElementById("defaultcontentformat").value;
-    let maillink = false;
     let custom = false;
-    if (value.includes("%msgurl%")) {
-        maillink = true;
-    } else if (value === "custom") {
-        maillink = true;
+    if (value === "custom") {
         custom = true;
     }
-    document.getElementById("setupinstructions-maillink").style.display = maillink
-        ? "block"
-        : "none";
     document.getElementById("defaultcontentformat-custom-wrapper").style.display =
         custom ? "block" : "none";
 }
