@@ -16,7 +16,12 @@ async function doRequest(endpoint, config) {
         .then((res) => {
             if (!res.ok) {
                 console.log("Error with request to " + endpoint + ": ", res);
-                return Promise.reject();
+                return res.json().then(errorData => {
+                    console.log("Error details:", errorData);
+                    return Promise.reject(errorData);
+                }).catch(e => {
+                    return Promise.reject(res.statusText);
+                });
             }
             return res.json();
         });
