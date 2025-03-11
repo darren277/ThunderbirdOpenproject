@@ -10,6 +10,12 @@ with open('thunderbird-openproject/manifest.json') as f:
 version = manifest['version']
 filename = 'thunderbird-openproject-{}.xpi'.format(version)
 
+
+# delete old xpi...
+if os.path.exists(filename):
+    os.remove(filename)
+
+
 with zipfile.ZipFile(filename, 'w') as zfile:
     os.chdir('thunderbird-openproject')
     for dirname, dirs, files in os.walk('.'):
