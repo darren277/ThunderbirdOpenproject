@@ -1,6 +1,13 @@
-
-
 # ThunderbirdOpenproject
+
+## How to Use
+
+1. Run `python3 release.py` to generate the `.xpi` file.
+2. Then load it from Thunderbird.
+3. Configure OpenProject API key, etc.
+
+# Original README
+
 Thunderbird Add-On for [OpenProject](https://www.openproject.org/) *built upon* [ThunderbirdTodoist](https://github.com/SmBe19/ThunderbirdTodoist) by Benjamin Schmid (SmBe19)
 
 Not created by, affiliated with, or supported by OpenProject.
