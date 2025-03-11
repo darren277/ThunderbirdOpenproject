@@ -103,10 +103,10 @@ function addTask(content, projectid, assigneeid, messageContent) {
             "project": {
                 "href": "/api/v3/projects/" + parseInt(projectid, 10),
             },
-            "category": {
-                "href": "/api/v3/categories/3",
-                "title": "From email"
-            }
+            // "category": {
+            //     "href": "/api/v3/categories/3",
+            //     "title": "From email"
+            // }
         }
     });
 
